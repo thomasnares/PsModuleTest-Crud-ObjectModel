@@ -1,0 +1,24 @@
+{
+    "name": "preston/customerpetlist",
+    "license": "AFL-3.0",
+    "description": "Manage pet list for your customers",
+    "authors": [
+        {
+            "name": "Preston",
+            "email": "preston@domain.com"
+        },
+        {
+            "name": "PrestaShop OSS Team"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Preston\\CustomerPetList\\": "src/"
+        },
+        "exclude-from-classmap": []
+    },
+    "config": {
+        "prepend-autoloader": false
+    },
+    "type": "prestashop-module"
+}

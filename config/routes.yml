@@ -1,0 +1,11 @@
+preston_customerpetlist_controller_index:
+    path: /customer-pet-list/index
+    methods: [GET]
+    defaults:
+        _controller: 'Preston\CustomerPetList\Controller\Admin\PetController::indexAction'
+
+preston_customerpetlist_controller_edit:
+    path: /customer-pet-list/edit/{petId}
+    methods: [GET,POST]
+    defaults:
+        _controller: 'Preston\CustomerPetList\Controller\Admin\PetController::editAction'
