@@ -41,8 +41,8 @@ final class PetFormDataHandler implements FormDataHandlerInterface
             $petObjectModel->$key = $value;
         }
 
-        $petObjectModel->setFieldsToUpdate(["name"]);
-
+        $petObjectModel->setFieldsToUpdate(["name" => true]);
         $petObjectModel->save();
+
     }
 }

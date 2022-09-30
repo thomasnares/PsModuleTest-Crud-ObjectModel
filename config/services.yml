@@ -1,33 +1,12 @@
+imports:
+    - { resource: grids.yml }
+
 services:
-  # Grid services
-  preston.customerPetList.grid.definition.factory.pets:
-    class: 'Preston\CustomerPetList\Grid\Definition\Factory\PetGridDefinitionFactory'
-    parent: 'prestashop.core.grid.definition.factory.abstract_grid_definition'
-
-  preston.customerPetList.grid.query_builder.pet:
-    class: 'Preston\CustomerPetList\Grid\Query\PetQueryBuilder'
-    parent: 'prestashop.core.grid.abstract_query_builder'
+  _defaults:
     public: true
-    arguments:
-      - '@prestashop.core.query.doctrine_search_criteria_applicator'
-      - "@=service('prestashop.adapter.legacy.context').getContext().language.id"
-      - "@=service('prestashop.adapter.legacy.context').getContext().shop.id"
-      - "@=service('prestashop.adapter.legacy.context').getContext().shop.id_shop_group"
-      - "@=service('prestashop.adapter.legacy.context').getContext().shop.getGroup().share_stock"
-      - '@prestashop.core.grid.query.filter.doctrine_filter_applicator'
-      - '@prestashop.adapter.legacy.configuration'
-
-  preston.customerPetList.grid.data_provider.pets:
-    class: '%prestashop.core.grid.data.factory.doctrine_grid_data_factory%'
-    arguments:
-      - '@preston.customerPetList.grid.query_builder.pet'
-      - '@prestashop.core.hook.dispatcher'
-      - '@prestashop.core.grid.query.doctrine_query_parser'
-      - 'pet'
 
   preston.customerPetList.grid.factory.pets:
     class: 'PrestaShop\PrestaShop\Core\Grid\GridFactory'
-    public: true
     arguments:
       - '@preston.customerPetList.grid.definition.factory.pets'
       - '@preston.customerPetList.grid.data_provider.pets'

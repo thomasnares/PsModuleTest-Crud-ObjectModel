@@ -27,12 +27,9 @@ declare(strict_types=1);
 
 namespace Preston\CustomerPetList\Controller\Admin;
 
-use Preston\CustomerPetList\Grid\Definition\Factory\ProductGridDefinitionFactory;
 use Preston\CustomerPetList\Grid\Filters\PetFilters;
 use PrestaShopBundle\Security\Annotation\AdminSecurity;
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
-use PrestaShopBundle\Service\Grid\ResponseBuilder;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -71,11 +68,10 @@ class PetController extends FrameworkBundleAdminController
      */
     public function editAction(int $petId, Request $request)
     {
-        
+
         $petFormBuilder = $this->get('preston.customerPetList.form.pet_form_builder');
         $petForm = $petFormBuilder->getFormFor($petId);
 
-        
         $petForm->handleRequest($request);
 
         $petFormHandler = $this->get('preston.customerPetList.form.pet_form_handler');
